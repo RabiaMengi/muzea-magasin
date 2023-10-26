@@ -1,17 +1,14 @@
 import OeuvreAvis from "@/components/AvisOeuvre";
 import BoiteBlanche from "@/components/BoiteBlanche";
-import PrimaryBtn from "@/components/Boutons";
 import Center from "@/components/Center";
 import Chatbot from "@/components/Chatbot";
 import FlyingButton from "@/components/FlyingButton";
 import Header from "@/components/Header";
 import ImagesOeuvre from "@/components/ImagesOeuvre";
-
 import Titre from "@/components/Titre";
 import IconPanier from "@/components/icons/IconPanier";
 import { connect } from "@/lib/dataBaseManager";
 import { Oeuvre } from "@/models/Oeuvre";
-
 import styled from "styled-components";
 
 const Desc = styled.p`
@@ -77,7 +74,7 @@ export default function PageOeuvre({ oeuvre }) {
 
 export async function getServerSideProps(context) {
   await connect();
-  const { id } = context.query;
+  const { id } = context.query; // context donne acces aux parametres de l'url
   const oeuvre = await Oeuvre.findById(id);
   return {
     props: {

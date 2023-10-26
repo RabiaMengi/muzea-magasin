@@ -17,7 +17,13 @@ const BoutonEtoile = styled.button`
   display: inline-block;
   padding: 0;
   border: 0;
-  width: ${(props) => (props.size === "sm" ? "16px" : "20px")}; 
+  width: ${(props) => (props.size === "sm" ? "16px" : "20px")};
+
+  ${(props) =>
+    props.disabled &&
+    `
+   cursor:default;
+  `}
 `;
 
 export default function EtoileAvis({
@@ -27,7 +33,7 @@ export default function EtoileAvis({
   size = "",
 }) {
   const [nbClick, setNbClick] = useState(defaultNbClick);
-  const cinqEtoile = [1, 2, 3, 4, 5];
+  const cinqEtoile = [1, 2, 3, 4, 5]; // loop sur 5 elmt
 
   function gestionClickEtoile(n) {
     if (disabled) {
@@ -40,13 +46,15 @@ export default function EtoileAvis({
   return (
     <WrapperEtoile>
       {cinqEtoile.map((n) => (
-        <BoutonEtoile
-          size={size} // Utilisez la taille ici
-          disabled={disabled}
-          onClick={() => gestionClickEtoile(n)}
-        >
-          {nbClick >= n ? <EtoilePleine /> : <EtoileVide />}
-        </BoutonEtoile>
+        <>
+          <BoutonEtoile
+            size={size} // Utilisez la taille ici
+            disabled={disabled}
+            onClick={() => gestionClickEtoile(n)}
+          >
+            {nbClick >= n ? <EtoilePleine /> : <EtoileVide />}
+          </BoutonEtoile>
+        </>
       ))}
     </WrapperEtoile>
   );
