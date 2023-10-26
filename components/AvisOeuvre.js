@@ -113,7 +113,12 @@ export default function AvisOeuvre({ oeuvre }) {
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  style={{ width: '16px', height: '16px', verticalAlign: 'middle', margin: '0 4px' }}
+                  style={{
+                    width: "16px",
+                    height: "16px",
+                    verticalAlign: "middle",
+                    margin: "0 4px",
+                  }}
                 >
                   <path
                     stroke-linecap="round"

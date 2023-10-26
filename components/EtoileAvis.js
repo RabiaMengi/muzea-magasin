@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import EtoilePleine from "./icons/EtoilePleine";
 import EtoileVide from "./icons/EtoileVide";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const WrapperEtoile = styled.div`
   display: inline-flex;
@@ -42,6 +42,11 @@ export default function EtoileAvis({
     setNbClick(n);
     onChange(n);
   }
+
+// regle le probleme de decalage des etoiles
+  useEffect(() => {
+    setNbClick(defaultNbClick);
+  }, [defaultNbClick]);
 
   return (
     <WrapperEtoile>
