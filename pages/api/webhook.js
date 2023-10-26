@@ -3,9 +3,6 @@ import { Commande } from "@/models/Commande";
 const stripe = require("stripe")(process.env.STRIPE_SK);
 import { buffer } from "micro";
 
-const endpointSecret =
-  "whsec_b7548e80880791f8769fdffc809ee2bb71edad96683a78c48d95ed5034884731";
-
 export default async function handle(req, res) {
   await connect();
   const sig = req.headers["stripe-signature"];
@@ -16,7 +13,7 @@ export default async function handle(req, res) {
     event = stripe.webhooks.constructEvent(
       await buffer(req),
       sig,
-      endpointSecret
+      process.env.STRIPE_WEBH_SECRET
     );
   } catch (err) {
     res.status(400).send(`Webhook Error: ${err.message}`);
@@ -38,12 +35,9 @@ export default async function handle(req, res) {
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
-  res.status(200).send('ok')
+  res.status(200).send("ok");
 }
 
 export const config = {
   api: { bodyParser: false },
 };
-
-//noble-zeal-unity-mercy
-//acct_1O1k5yD32SDL3Xed
