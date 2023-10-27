@@ -90,7 +90,7 @@ export default function PageCompte() {
       return;
     }
 
-    setAdresseCharger(false);
+   
     setSouhaitCharger(false);
     setCommandeCharger(false);
     axios.get("/api/adresse").then((response) => {
@@ -100,7 +100,7 @@ export default function PageCompte() {
       setVille(response.data.ville);
       setCodePostal(response.data.codePostal);
       setPays(response.data.pays);
-      setAdresseCharger(true);
+     
     });
 
     axios.get("/api/listedesouhait").then((responses) => {
