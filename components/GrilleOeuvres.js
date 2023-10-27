@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import BoiteOeuvre from "./BoiteOeuvre";
-import ChatbotComponent from "./Chatbot";
 import Chatbot from "./Chatbot";
 
 const GrilleOeuvresStyle = styled.div`

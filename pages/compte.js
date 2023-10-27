@@ -55,7 +55,6 @@ export default function PageCompte() {
   const [ville, setVille] = useState("");
   const [codePostal, setCodePostal] = useState("");
   const [pays, setPays] = useState("");
-  const [adresseCharger, setAdresseCharger] = useState(true);
   const [souhaitCharger, setSouhaitCharger] = useState(true);
   const [commandeCharger, setCommandeCharger] = useState(true);
 
@@ -140,10 +139,7 @@ export default function PageCompte() {
                     <div>
                       {commandeClient.length > 0 &&
                         commandeClient.map((o) => <Commande key={o._id} {...o} />)}
-                      {commandeClient.lenght === 0 && (
-                        <p>Aucune commande pour le moment</p>
-                      )}
-                      {commandeClient.lenght === 0 && (
+                      {commandeClient.length === 0 && (
                         <p>Aucune commande pour le moment</p>
                       )}
                       {!session && (
